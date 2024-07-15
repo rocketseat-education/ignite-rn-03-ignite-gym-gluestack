@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@rocketseat/eslint-config": "^2.2.2",
     "@types/react": "~18.2.45",
     "typescript": "^5.1.3"
   },
