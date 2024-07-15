@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { StatusBar, View } from 'react-native'
+import { StatusBar } from 'react-native'
 import {
   useFonts,
   Roboto_700Bold,
@@ -7,6 +7,7 @@ import {
 } from '@expo-google-fonts/roboto'
 import { Center, GluestackUIProvider, Text } from '@gluestack-ui/themed'
 import { config } from './config/gluestack-ui.config'
+import { Loading } from '@components/Loading'
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_700Bold, Roboto_400Regular })
@@ -24,7 +25,7 @@ export default function App() {
           <Text>Home</Text>
         </Center>
       ) : (
-        <View />
+        <Loading />
       )}
     </GluestackUIProvider>
   )
