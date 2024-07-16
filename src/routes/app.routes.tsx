@@ -12,6 +12,7 @@ import { Home } from '@screens/Home'
 import { History } from '@screens/History'
 import { Profile } from '@screens/Profile'
 import { Exercise } from '@screens/Exercise'
+import { Platform } from 'react-native'
 
 type AppRoutes = {
   home: undefined
@@ -35,6 +36,13 @@ export function AppRoutes() {
         tabBarShowLabel: false,
         tabBarActiveTintColor: tokens.colors.green500,
         tabBarInactiveTintColor: tokens.colors.gray200,
+        tabBarStyle: {
+          backgroundColor: tokens.colors.gray600,
+          borderTopWidth: 0,
+          height: Platform.OS === 'android' ? 'auto' : 96,
+          paddingBottom: tokens.space['10'],
+          paddingTop: tokens.space['6'],
+        },
       }}
     >
       <Screen
@@ -64,7 +72,11 @@ export function AppRoutes() {
           ),
         }}
       />
-      <Screen name="exercise" component={Exercise} />
+      <Screen
+        name="exercise"
+        component={Exercise}
+        options={{ tabBarButton: () => null }}
+      />
     </Navigator>
   )
 }
