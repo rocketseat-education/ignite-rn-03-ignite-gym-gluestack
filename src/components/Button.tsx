@@ -7,26 +7,36 @@ import { ComponentProps } from 'react'
 
 type Props = ComponentProps<typeof GluestackButton> & {
   title: string
+  variant?: 'solid' | 'outline'
   isLoading?: boolean
 }
 
-export function Button({ title, isLoading = false, ...props }: Props) {
+export function Button({
+  title,
+  variant = 'solid',
+  isLoading = false,
+  ...props
+}: Props) {
   return (
     <GluestackButton
       w="$full"
       h="$14"
-      bg="$green700"
-      borderWidth="$0"
+      bg={variant === 'outline' ? 'transparent' : '$green700'}
+      borderWidth={variant === 'outline' ? '$1' : '$0'}
       borderColor="$green500"
       rounded="$sm"
-      $active-bg="$green500"
+      $active-bg={variant === 'outline' ? '$gray500' : '$green500'}
       disabled={isLoading}
       {...props}
     >
       {isLoading ? (
         <ButtonSpinner color="$white" />
       ) : (
-        <Text color="$white" fontFamily="$heading" fontSize="$sm">
+        <Text
+          color={variant === 'outline' ? '$green500' : '$white'}
+          fontFamily="$heading"
+          fontSize="$sm"
+        >
           {title}
         </Text>
       )}
