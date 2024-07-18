@@ -1,6 +1,6 @@
 {
   "extends": "@rocketseat/eslint-config/react",
   "rules": {
-    "jsx-a11y/alt-text": false
+    "@jsx-a11y/alt-text": "off"
   }
 }
