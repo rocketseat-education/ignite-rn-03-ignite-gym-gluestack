@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-return */
 import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 import { ScreenHeader } from '@components/ScreenHeader'
@@ -8,12 +9,18 @@ import { ScrollView, TouchableOpacity } from 'react-native'
 
 export function Profile() {
   async function handleUserPhotoSelect() {
-    await ImagePicker.launchImageLibraryAsync({
+    const photoSelected = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       quality: 1,
       aspect: [4, 4],
       allowsEditing: true,
     })
+
+    if (photoSelected.canceled) {
+      return
+    }
+
+    console.log(photoSelected.assets[0])
   }
 
   return (
